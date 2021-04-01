@@ -1,0 +1,26 @@
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                host: '%env(MYSQL_HOST)%'
+                port: '%env(MYSQL_PORT)%'
+                driver: '%env(MYSQL_DRIVER)%'
+                server_version: '%env(MYSQL_SERVER_VERSION)%'
+                charset: '%env(MYSQL_CHARSET)%'
+                dbname: '%env(MYSQL_DB)%'
+                user: '%env(MYSQL_USER)%'
+                password: '%env(MYSQL_PASS)%'
+                # @see https://symfony.com/doc/current/bundles/DoctrineBundle/configuration.html
+                persistent: '%env(bool:MYSQL_PDO_PERSISTENT)%'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App

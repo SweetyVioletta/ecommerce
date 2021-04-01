@@ -1,0 +1,4 @@
+product:
+  resource: ../../src/Product/Controller
+  type: annotation
+
